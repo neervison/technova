@@ -1,0 +1,77 @@
+/* ============================================================
+   TechNova — Estilos propios (vanilla CSS)
+   Solo lo que Tailwind CDN no genera: keyframes, utilidades
+   de marca, scrollbar, carrusel y toast.
+   ============================================================ */
+
+/* Animación flotante para elementos del hero */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-delayed { animation: float 6s ease-in-out 3s infinite; }
+
+/* Anillo pulsante para el FAB de WhatsApp */
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  70% { transform: scale(1); box-shadow: 0 0 0 14px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+.pulse-ring { animation: pulse-ring 2.2s cubic-bezier(0.66, 0, 0, 1) infinite; }
+
+/* Texto con gradiente esmeralda -> cian */
+.gradient-text {
+  background-image: linear-gradient(90deg, #10b981, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Fondo mesh/grid del hero: radial-gradients + patrón de puntos */
+.hero-mesh {
+  background-color: #0a0f1a;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.18), transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(34, 211, 238, 0.16), transparent 42%),
+    radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.12), transparent 45%),
+    radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 22px 22px;
+}
+
+/* Scrollbar oscuro */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0a0f1a; }
+::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+/* Hover con glow: eleva y proyecta sombra esmeralda/cian */
+.glow-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.glow-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px -12px rgba(16, 185, 129, 0.45),
+              0 10px 28px -14px rgba(34, 211, 238, 0.45);
+  border-color: rgba(34, 211, 238, 0.5);
+}
+
+/* Margen superior en secciones para compensar el navbar fijo */
+section[id] { scroll-margin-top: 84px; }
+
+/* Carrusel de testimonios */
+.ts-track { display: flex; transition: transform 0.5s ease; }
+.ts-slide { min-width: 100%; }
+.ts-dot.active { background-color: #10b981; }
+
+/* Toast */
+#toast {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Salvaguarda AOS: si el script de animación no carga, el contenido
+   con data-aos NO debe quedar invisible. Se activa solo si AOS existe. */
+html:not(.aos-enabled) [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+}

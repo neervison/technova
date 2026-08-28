@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: technova
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: MONGODB_URI
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: WA_NUMBER
+        sync: false
+      - key: COMPANY_NAME
+        sync: false
+      - key: COMPANY_RFC
+        sync: false
+      - key: COMPANY_ADDRESS
+        sync: false
+      - key: COMPANY_PHONE
+        sync: false
+      - key: COMPANY_EMAIL
+        sync: false

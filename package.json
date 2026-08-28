@@ -1,0 +1,26 @@
+{
+  "name": "technova",
+  "version": "1.0.0",
+  "description": "Landing page comercial + backend (Node/Express/SQLite) para gestión de clientes, pedidos y facturas.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "keywords": [
+    "landing",
+    "express",
+    "mongodb",
+    "facturacion"
+  ],
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongodb": "^6.21.0",
+    "pdfkit": "^0.20.1"
+  }
+}
