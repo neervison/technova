@@ -61,6 +61,24 @@
     });
   }
 
+  // 3.1b Título del hero con efecto de tipeo (igual que el subtítulo)
+  function initHeroTitle() {
+    const el = $('#hero-title');
+    if (!el) return;
+    const full = 'Tu tecnología, siempre al máximo rendimiento';
+    let c = 0;
+    function tick() {
+      el.textContent = full.substring(0, c);
+      if (c < full.length) {
+        c++;
+        setTimeout(tick, 45);
+      } else {
+        el.innerHTML = 'Tu tecnología, siempre al <span class="gradient-text">máximo rendimiento</span>';
+      }
+    }
+    tick();
+  }
+
   // 3.2 Subtítulo animado (typewriter)
   function initTyped() {
     const el = $('#typed');
@@ -279,6 +297,7 @@
   /* ---------- 4. Arranque ---------- */
   function init() {
     initNav();
+    initHeroTitle();
     initTyped();
     initTestimonials();
     initPortfolio();
