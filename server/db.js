@@ -3,7 +3,11 @@
 // mongodb://127.0.0.1:27017/technova (útil para desarrollo local).
 const { MongoClient, ObjectId } = require('mongodb');
 
-const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/technova';
+const uri =
+  process.env.MONGODB_URI ||
+  process.env.MONGO_URI ||
+  process.env.MONGO_PUBLIC_URL ||
+  'mongodb://127.0.0.1:27017/technova';
 const DB_NAME = process.env.MONGODB_DB || (uri.split('/').pop().split('?')[0]) || 'technova';
 
 let client = null;

@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TechNova — Mantenimiento de PCs y Desarrollo Web</title>
   <meta name="description" content="TechNova: mantenimiento, reparación y optimización de PCs, y desarrollo web profesional. Agenda tu cita por WhatsApp." />
+  <meta name="theme-color" content="#0a0f1a" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
 
   <!-- Google Fonts: Inter + Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -424,7 +427,12 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
   <!-- ============ APP JS ============ -->
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
+      }
+    </script>
 </body>
 </html>
