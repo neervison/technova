@@ -6,7 +6,7 @@
 window.TN = window.TN || {};
 
 /* Número de WhatsApp (placeholder): reemplazar por el número real */
-window.TN.WA_NUMBER = '5210000000000';
+window.TN.WA_NUMBER = '5696112430';
 
 /* Testimonios del carrusel */
 window.TN.testimonials = [
