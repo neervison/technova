@@ -1,4 +1,4 @@
-/* ============================================================
+/*============================================================
    TechNova — Datos / contenido editable
    Separado de la lógica (js/main.js) para fácil mantenimiento.
    Se expone vía window.TN para no contaminar el scope global.
