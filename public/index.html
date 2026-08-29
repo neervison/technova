@@ -341,6 +341,34 @@
     </svg>
   </a>
 
+  <!-- ============ CHAT BOT EN SITIO ============ -->
+  <div id="tn-chat" class="tn-chat">
+    <button id="tn-chat-toggle" class="tn-chat-toggle" aria-label="Abrir chat">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    </button>
+    <div id="tn-chat-panel" class="tn-chat-panel hidden">
+      <div class="tn-chat-head">
+        <div>
+          <div class="tn-chat-title">TechNova · Asistente</div>
+          <div class="tn-chat-sub">Responde al instante</div>
+        </div>
+        <button id="tn-chat-close" class="tn-chat-close" aria-label="Cerrar">&times;</button>
+      </div>
+      <div id="tn-chat-msgs" class="tn-chat-msgs"></div>
+      <div id="tn-chat-chips" class="tn-chat-chips"></div>
+      <form id="tn-chat-form" class="tn-chat-form">
+        <input id="tn-chat-input" class="tn-chat-input" autocomplete="off" placeholder="Escribe tu mensaje..." />
+        <button type="submit" class="tn-chat-send" aria-label="Enviar">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"></path>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- ============ FOOTER ============ -->
   <footer class="bg-brand-dark border-t border-brand-border pt-16 pb-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -429,6 +457,7 @@
   <!-- ============ APP JS ============ -->
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(() => {}));
