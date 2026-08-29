@@ -6,6 +6,11 @@ El bot ya está programado en `server/bot.js` + `server/bot.json` y expone:
 
 Para que responda a clientes **reales** necesitas una cuenta de **WhatsApp Business** verificada y conectarla con Meta. Pasos:
 
+## Dónde copiar cada valor (en developers.facebook.com)
+- **WHATSAPP_PHONE_ID**: entra a tu app → menú izquierdo **WhatsApp > API Setup**. En la tarjeta *Send messages* verás tu número y, justo debajo, el **Phone Number ID** (cadena numérica larga, ej. `123456789012345`). Cópialo.
+- **WHATSAPP_TOKEN** (temporal, para probar ya): en la misma página **WhatsApp > API Setup**, arriba a la derecha hay un botón **"Generate access token"**. Cópialo; expira en ~60 min.
+- **WHATSAPP_TOKEN** (permanente, para producción): ver sección 1 abajo (System User en Business Manager).
+
 ## 1. Crear la app en Meta
 1. Entra a https://developers.facebook.com y crea una app (tipo "Business").
 2. En el panel de la app, agrega el producto **WhatsApp**.
