@@ -287,7 +287,7 @@
       if (!waLink) {
         const waNumber = (window.TN && window.TN.WA_NUMBER) || '56961112430';
         const greeting = (window.TN && window.TN.WA_GREETING) || '¡Hola! 👋';
-        const msg = `${greeting}\n\n¡Quiero agendar una cita! 🚀\n\n*Servicio:* ${servicio.value}\n*Fecha:* ${fecha.value}\n*Hora:* ${hora.value}\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n\n*Descripción:*\n${descripcion || '—'}`;
+        const msg = `${greeting}\n\n*¡Quiero agendar una cita!*\n\n*Servicio:* ${servicio.value}\n*Fecha:* ${fecha.value}\n*Hora:* ${hora.value}\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n\n*Descripción:*\n${descripcion || '—'}`;
         waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
       }
       window.open(waLink, '_blank');

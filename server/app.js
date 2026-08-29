@@ -33,7 +33,7 @@ async function notifyWhatsApp(telefono, nombre, servicio, orderId) {
   if (!digits) return;
 
   const shortId = String(orderId).slice(-6);
-  const text = `¡Hola ${nombre || ''}! 👋 Gracias por tu solicitud en TechNova. Recibimos tu pedido (#${shortId}) de *${servicio}*. Te contactaremos pronto para confirmar los detalles. 🚀`;
+  const text = `*¡Hola ${nombre || ''}!* Gracias por tu solicitud en TechNova. Recibimos tu pedido (#${shortId}) de *${servicio}*. Te contactaremos pronto para confirmar los detalles.`;
 
   const url = `https://graph.facebook.com/v19.0/${phoneId}/messages`;
   const template = process.env.WHATSAPP_TEMPLATE;
@@ -155,8 +155,8 @@ app.post('/api/orders', async (req, res) => {
   const orderId = info.insertedId.toString();
 
   const waNumber = process.env.WA_NUMBER || '56961112430';
-  const greeting = process.env.WA_GREETING || '¡Hola! 👋 Somos TechNova. Cuéntanos en qué te ayudamos: reparación y optimización de tu PC, mantenimiento o desarrollo web. Agenda tu cita, ¡rápido y garantizado! 🚀';
-  const msg = `${greeting}\n\n¡Quiero agendar una cita! 🚀\n\n*Servicio:* ${servicio}\n*Fecha:* ${fecha || '—'}\n*Hora:* ${hora || '—'}\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n\n*Descripción:*\n${descripcion || '—'}`;
+  const greeting = process.env.WA_GREETING || '*¡Hola!* Somos TechNova. Cuéntanos en qué te ayudamos: reparación y optimización de tu PC, mantenimiento o desarrollo web. Agenda tu cita, ¡rápido y garantizado!';
+  const msg = `${greeting}\n\n*¡Quiero agendar una cita!*\n\n*Servicio:* ${servicio}\n*Fecha:* ${fecha || '—'}\n*Hora:* ${hora || '—'}\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n\n*Descripción:*\n${descripcion || '—'}`;
   const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
 
   // Notificación automática al cliente por WhatsApp (si hay credenciales)
