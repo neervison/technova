@@ -1,0 +1,24 @@
+{
+  "welcome": "*TechNova* — ¡Hola! Soy el asistente virtual. Elige una opción respondiendo el número:\n1) Reparación y mantenimiento de PC\n2) Optimización y limpieza\n3) Desarrollo de página web\n4) Ver portafolio\n5) Hablar con un asesor",
+  "replies": {
+    "repair": "*Reparación y mantenimiento de PC*\nDiagnóstico, cambio de piezas, mantenimiento preventivo y formateo. ¿Tu equipo es:\n1) Laptop\n2) Desktop\n3) Hablar con asesor",
+    "repair_laptop": "Perfecto. Agendamos revisión de tu laptop. ¿Quieres pedir cita ya? Responde 1 sí / 2 no, o 5 para asesor.",
+    "repair_desktop": "Perfecto. Agendamos revisión de tu desktop. ¿Quieres pedir cita ya? Responde 1 sí / 2 no, o 5 para asesor.",
+    "optimize": "*Optimización y limpieza*\nLimpieza de ventiladores, mejora de arranque y eliminación de virus. ¿Agendamos?\n1) Sí, agendar\n2) No por ahora\n5) Asesor",
+    "web": "*Desarrollo de página web*\nCreamos landings, tiendas y sistemas. ¿Qué necesitas?\n1) Landing page\n2) Tienda en línea\n3) Sistema a medida\n5) Asesor",
+    "web_landing": "Buena elección. Una landing de alto impacto en días. ¿Quieres cotizar? Responde 1 sí / 2 no, o 5 asesor.",
+    "web_store": "Tienda en línea con pagos y catálogo. ¿Quieres cotizar? Responde 1 sí / 2 no, o 5 asesor.",
+    "web_system": "Sistemas a medida (inventario, citas, etc.). ¿Quieres cotizar? Responde 1 sí / 2 no, o 5 asesor.",
+    "portfolio": "Proyectos recientes:\n1) Laptop corporativa — reparación y optimización\n2) Landing restaurant — diseño y despliegue\n3) PC gamer — mantenimiento y overclock\n4) Tienda artesanías — desarrollo web\nResponde 5 para hablar con un asesor.",
+    "advisor": "Un asesor te contactará pronto. Déjanos tu *nombre* y *teléfono* y te escribimos. También puedes agendar en la web.",
+    "bye": "¡Gracias! Te esperamos en TechNova. 🚀",
+    "fallback": "No entendí. Escribe el número de la opción (1-5) o 5 para hablar con un asesor."
+  },
+  "portfolio": [
+    { "name": "Laptop corporativa", "desc": "Reparación y optimización" },
+    { "name": "Landing restaurant", "desc": "Diseño y despliegue web" },
+    { "name": "PC gamer", "desc": "Mantenimiento y overclock" },
+    { "name": "Tienda artesanías", "desc": "Desarrollo de tienda en línea" }
+  ],
+  "advisorNumber": "56961112430"
+}

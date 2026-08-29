@@ -6,6 +6,7 @@ const express = require('express');
 const db = require('./db');
 const auth = require('./auth');
 const invoice = require('./invoice');
+const bot = require('./bot');
 
 const app = express();
 const PUBLIC = path.join(__dirname, '..', 'public');
@@ -23,17 +24,16 @@ const company = {
 // variables de entorno. Envía un mensaje de confirmación al cliente cuando
 // crea un pedido. Fuera de la ventana de 24h de WhatsApp se requiere una
 // plantilla aprobada (usa WHATSAPP_TEMPLATE). No rompe el flujo si falla.
-async function notifyWhatsApp(telefono, nombre, servicio, orderId) {
+// Envía un mensaje de texto por WhatsApp (Meta Cloud API). No hace nada si no
+// hay credenciales. Reutilizable por notificaciones y por el bot.
+async function sendWhatsApp(to, text) {
   const token = process.env.WHATSAPP_TOKEN;
   const phoneId = process.env.WHATSAPP_PHONE_ID;
-  if (!token || !phoneId) return; // desactivado: no hay credenciales
+  if (!token || !phoneId) return false;
 
-  let digits = String(telefono || '').replace(/\D/g, '');
+  let digits = String(to || '').replace(/\D/g, '');
   if (!digits.startsWith('56') && digits.length === 9) digits = '56' + digits;
-  if (!digits) return;
-
-  const shortId = String(orderId).slice(-6);
-  const text = `*¡Hola ${nombre || ''}!* Gracias por tu solicitud en TechNova. Recibimos tu pedido (#${shortId}) de *${servicio}*. Te contactaremos pronto para confirmar los detalles.`;
+  if (!digits) return false;
 
   const url = `https://graph.facebook.com/v19.0/${phoneId}/messages`;
   const template = process.env.WHATSAPP_TEMPLATE;
@@ -45,19 +45,10 @@ async function notifyWhatsApp(telefono, nombre, servicio, orderId) {
         template: {
           name: template,
           language: { code: 'es' },
-          components: [{ type: 'body', parameters: [
-            { type: 'text', text: nombre || '' },
-            { type: 'text', text: servicio || '' },
-            { type: 'text', text: shortId },
-          ] }],
+          components: [{ type: 'body', parameters: [{ type: 'text', text: text }] }],
         },
       }
-    : {
-        messaging_product: 'whatsapp',
-        to: digits,
-        type: 'text',
-        text: { body: text },
-      };
+    : { messaging_product: 'whatsapp', to: digits, type: 'text', text: { body: text } };
 
   try {
     const r = await fetch(url, {
@@ -67,12 +58,65 @@ async function notifyWhatsApp(telefono, nombre, servicio, orderId) {
     });
     if (!r.ok) {
       const err = await r.text().catch(() => '');
-      console.error('WhatsApp notify falló:', r.status, err.slice(0, 200));
+      console.error('WhatsApp send falló:', r.status, err.slice(0, 200));
+      return false;
     }
+    return true;
   } catch (e) {
-    console.error('WhatsApp notify error:', e.message);
+    console.error('WhatsApp send error:', e.message);
+    return false;
   }
 }
+
+// Notificación de confirmación de pedido al cliente (usa sendWhatsApp).
+async function notifyWhatsApp(telefono, nombre, servicio, orderId) {
+  const shortId = String(orderId).slice(-6);
+  const text = `*¡Hola ${nombre || ''}!* Gracias por tu solicitud en TechNova. Recibimos tu pedido (#${shortId}) de *${servicio}*. Te contactaremos pronto para confirmar los detalles.`;
+  await sendWhatsApp(telefono, text);
+}
+
+// ---------- webhook de WhatsApp (Meta Cloud API) ----------
+const WHATSAPP_VERIFY_TOKEN = process.env.WHATSAPP_VERIFY_TOKEN || 'techNovaWebhook';
+
+app.get('/webhook/whatsapp', (req, res) => {
+  const mode = req.query['hub.mode'];
+  const token = req.query['hub.verify_token'];
+  const challenge = req.query['hub.challenge'];
+  if (mode === 'subscribe' && token === WHATSAPP_VERIFY_TOKEN) {
+    return res.status(200).send(challenge);
+  }
+  res.sendStatus(403);
+});
+
+app.post('/webhook/whatsapp', (req, res) => {
+  res.sendStatus(200); // acuse inmediato a Meta
+  const entry = req.body && req.body.entry;
+  if (!entry) return;
+  (async () => {
+    for (const e of entry) {
+      for (const change of e.changes || []) {
+        const value = change.value || {};
+        const msg = value.messages && value.messages[0];
+        if (!msg) continue;
+        const from = msg.from;
+        const text = (msg.text && msg.text.body) || '';
+        const { reply, advisor } = bot.handleIncoming(from, text);
+        await sendWhatsApp(from, reply);
+        if (advisor && bot.advisorNumber) {
+          await sendWhatsApp(bot.advisorNumber, `📩 Cliente ${from} pidió hablar con un asesor vía bot.`);
+        }
+      }
+    }
+  })().catch((err) => console.error('Webhook WhatsApp error:', err.message));
+});
+
+// Ruta de prueba del bot sin Meta (desarrollo)
+app.post('/api/bot/simulate', (req, res) => {
+  const from = (req.body && req.body.from) || '56961112430';
+  const text = (req.body && req.body.text) || '';
+  const out = bot.handleIncoming(from, text);
+  res.json({ reply: out.reply, advisor: !!out.advisor });
+});
 
 // ---------- utilidades ----------
 function getCookie(req, name) {
