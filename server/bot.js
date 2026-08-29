@@ -2,6 +2,7 @@
 // Usa server/bot.json como base de conocimiento. Mantiene sesión en memoria.
 const fs = require('node:fs');
 const path = require('node:path');
+const db = require('./db');
 
 const DATA = JSON.parse(fs.readFileSync(path.join(__dirname, 'bot.json'), 'utf8'));
 
@@ -26,8 +27,30 @@ function firstDigit(text) {
   return m ? m[0] : null;
 }
 
+// Consulta el último pedido de un cliente por su número (si existe).
+async function orderStatus(phone) {
+  try {
+    const D = db.getDb();
+    if (!D) return null;
+    const digits = String(phone || '').replace(/\D/g, '');
+    if (!digits) return null;
+    const custs = await D.collection('customers').find({}).toArray();
+    const cust = custs.find((c) => String(c.phone || '').replace(/\D/g, '') === digits);
+    if (!cust) return null;
+    const orders = await D.collection('orders')
+      .find({ customer_id: cust._id })
+      .sort({ created_at: -1 })
+      .limit(1)
+      .toArray();
+    return orders && orders.length ? orders[0] : null;
+  } catch (e) {
+    console.error('orderStatus error:', e.message);
+    return null;
+  }
+}
+
 // Devuelve { reply, advisor } donde advisor=true indica avisar al negocio.
-function handleIncoming(phone, text) {
+async function handleIncoming(phone, text) {
   const raw = String(text || '').trim().toLowerCase();
   const digit = firstDigit(text);
   const step = getStep(phone);
@@ -36,6 +59,19 @@ function handleIncoming(phone, text) {
   if (raw.includes('menu') || raw.includes('inicio') || raw.includes('hola')) {
     setStep(phone, 'main');
     return { reply: DATA.welcome };
+  }
+
+  // Estado de pedido / cita (consulta la base de datos)
+  if (/pedido|estado|seguimiento|orden|cit/.test(raw)) {
+    const o = await orderStatus(phone);
+    if (o) {
+      return {
+        reply: `*Estado de tu pedido:*\nServicio: ${o.service}\nFecha: ${o.fecha || '—'}\nHora: ${o.hora || '—'}\nEstado: ${o.status}`,
+      };
+    }
+    return {
+      reply: 'No encontré pedidos asociados a tu número. Si quieres, agendamos uno escribiendo el número de la opción (1-5) o aquí: https://technova-t0j2.onrender.com/#agendar',
+    };
   }
 
   // Preguntas frecuentes por palabra clave

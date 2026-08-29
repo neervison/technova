@@ -103,7 +103,7 @@ app.post('/webhook/whatsapp', (req, res) => {
         if (!msg) continue;
         const from = msg.from;
         const text = (msg.text && msg.text.body) || '';
-        const { reply, advisor } = bot.handleIncoming(from, text);
+        const { reply, advisor } = await bot.handleIncoming(from, text);
         await sendWhatsApp(from, reply);
         if (advisor && bot.advisorNumber) {
           await sendWhatsApp(bot.advisorNumber, `📩 Cliente ${from} pidió hablar con un asesor vía bot.`);
@@ -114,10 +114,10 @@ app.post('/webhook/whatsapp', (req, res) => {
 });
 
 // Ruta de prueba del bot sin Meta (desarrollo)
-app.post('/api/bot/simulate', (req, res) => {
+app.post('/api/bot/simulate', async (req, res) => {
   const from = (req.body && req.body.from) || '56961112430';
   const text = (req.body && req.body.text) || '';
-  const out = bot.handleIncoming(from, text);
+  const out = await bot.handleIncoming(from, text);
   res.json({ reply: out.reply, advisor: !!out.advisor });
 });
 
