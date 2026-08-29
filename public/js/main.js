@@ -276,7 +276,7 @@
 
       // 2) Redirigir a WhatsApp (link del servidor o construido en cliente)
       if (!waLink) {
-        const waNumber = (window.TN && window.TN.WA_NUMBER) || '5210000000000';
+        const waNumber = (window.TN && window.TN.WA_NUMBER) || '56961112430';
         const msg = `¡Hola! Quiero agendar una cita 🚀\n\n*Servicio:* ${servicio.value}\n*Fecha:* ${fecha.value}\n*Hora:* ${hora.value}\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n\n*Descripción:*\n${descripcion || '—'}`;
         waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
       }
