@@ -121,6 +121,46 @@ app.post('/api/bot/simulate', async (req, res) => {
   res.json({ reply: out.reply, advisor: !!out.advisor });
 });
 
+// ---------- Bot de Telegram (canal alternativo a Meta) ----------
+const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
+
+async function sendTelegram(chatId, text) {
+  if (!TELEGRAM_TOKEN) return;
+  const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
+  try {
+    await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'Markdown' }),
+    });
+  } catch (e) {
+    // Reintento sin formato si Markdown falla
+    try {
+      await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: chatId, text }),
+      });
+    } catch (e2) {
+      console.error('sendTelegram error:', e2.message);
+    }
+  }
+}
+
+app.post('/webhook/telegram', async (req, res) => {
+  try {
+    const msg = req.body && req.body.message;
+    if (msg && msg.text) {
+      const out = await bot.handleIncoming(String(msg.chat.id), msg.text);
+      await sendTelegram(msg.chat.id, out.reply);
+      if (out.advisor) console.log('Bot Telegram escalado a asesor:', msg.chat.id);
+    }
+    res.json({ ok: true });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: e.message });
+  }
+});
+
 // ---------- utilidades ----------
 function getCookie(req, name) {
   const c = req.headers.cookie;

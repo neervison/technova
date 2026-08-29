@@ -63,3 +63,13 @@ En el panel de Render de este servicio, agrega/actualiza:
 - **Quitar el simulador en producción:** `POST /api/bot/simulate` es público; puedes
   borrarlo o protegerlo si lo deseas.
 - El número de asesor al que avisa el bot está en `bot.json` → `advisorNumber`.
+
+## Opción B: Bot en Telegram (más simple, sin Meta)
+El mismo `bot.js` / `bot.json` funciona en Telegram. Pasos:
+1. En Telegram habla con **@BotFather** y manda `/newbot`. Dale nombre y usuario. BotFather te devuelve un **token** (`123456789:ABC...`).
+2. Pon ese token en la variable de entorno **`TELEGRAM_TOKEN`** (Render → Environment, o tu `.env`).
+3. La app registra sola el webhook en `https://<tu-dominio>/webhook/telegram` al arrancar (usa `RENDER_EXTERNAL_URL`). Para forzarlo manualmente:
+   `https://api.telegram.org/bot<TOKEN>/setWebhook?url=<tu-dominio>/webhook/telegram`
+4. Escríbele al bot en Telegram y responderá con los mismos menús, precios y consulta de pedidos.
+
+Ventaja: no necesitas cuenta de Meta ni verificación de número; el bot queda en vivo en minutos.
