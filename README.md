@@ -101,3 +101,17 @@ Colecciones (MongoDB):
 - El archivo de base de datos (`db/*.db`) y `.env` están en `.gitignore`.
 - El número de WhatsApp en el formulario y en el servidor debe coincidir; cámbialo en
   `public/js/data.js` (FAB) y en `.env` (`WA_NUMBER`).
+
+## Bot de WhatsApp
+
+El proyecto incluye un asistente virtual que responde a los clientes por WhatsApp
+usando la información del sitio (servicios, portafolio) y les hace preguntas de
+selección por número. Archivos:
+
+- `server/bot.json` — base de conocimiento (respuestas, portafolio, número de asesor).
+- `server/bot.js` — lógica de menús y FAQ.
+- `server/app.js` — `POST /webhook/whatsapp` (recibe mensajes de Meta) y
+  `POST /api/bot/simulate` (prueba sin Meta).
+
+Para conectarlo a WhatsApp real (Meta Cloud API) consulta **`WHATSAPP_SETUP.md`**.
+Mientras no configures `WHATSAPP_TOKEN` y `WHATSAPP_PHONE_ID`, el bot queda inactivo.

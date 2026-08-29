@@ -40,10 +40,12 @@ function handleIncoming(phone, text) {
 
   // Preguntas frecuentes por palabra clave
   const faq = {
-    precio: DATA.replies.precio, costo: DATA.replies.precio,
+    precio: DATA.replies.precio, costo: DATA.replies.precio, cotizar: DATA.replies.precio,
     horario: DATA.replies.horario, hora: DATA.replies.horario,
     ubicacion: DATA.replies.ubicacion, donde: DATA.replies.ubicacion,
     gracias: DATA.replies.gracias,
+    si: DATA.replies.ok, ok: DATA.replies.ok, vale: DATA.replies.ok, claro: DATA.replies.ok,
+    no: DATA.replies.no,
   };
   for (const k in faq) {
     if (raw.includes(k)) return { reply: faq[k] };

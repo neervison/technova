@@ -1,5 +1,5 @@
 {
-  "welcome": "*TechNova* — ¡Hola! Soy el asistente virtual. Elige una opción respondiendo el número:\n1) Reparación y mantenimiento de PC\n2) Optimización y limpieza\n3) Desarrollo de página web\n4) Ver portafolio\n5) Hablar con un asesor",
+  "welcome": "*TechNova* — ¡Hola! Soy el asistente virtual. Elige una opción respondiendo el número:\n1) Reparación y mantenimiento de PC\n2) Optimización y limpieza\n3) Desarrollo de página web\n4) Ver portafolio\n5) Hablar con un asesor\n\nTambién puedes agendar tu cita aquí: https://technova-t0j2.onrender.com/#agendar",
   "replies": {
     "repair": "*Reparación y mantenimiento de PC*\nDiagnóstico, cambio de piezas, mantenimiento preventivo y formateo. ¿Tu equipo es:\n1) Laptop\n2) Desktop\n3) Hablar con asesor",
     "repair_laptop": "Perfecto. Agendamos revisión de tu laptop. ¿Quieres pedir cita ya? Responde 1 sí / 2 no, o 5 para asesor.",
@@ -16,7 +16,9 @@
     "precio": "*Precios:* el diagnóstico es gratis y cotizamos antes de empezar. Mantenimiento, reparación y páginas web se presupuestan según el equipo y el alcance. Escribe 5 para hablar con un asesor.",
     "horario": "Atendemos *lunes a sábado de 9:00 a 19:00*. Agendamos tu cita por esta misma vía o en la web.",
     "ubicacion": "Estamos en Av. Tecnología 123, Ciudad. También hacemos soporte remoto.",
-    "gracias": "¡Con gusto! Estamos para ayudarte. ¿Necesitas algo más? Escribe el número de la opción (1-5) o 5 para hablar con un asesor."
+    "gracias": "¡Con gusto! Estamos para ayudarte. ¿Necesitas algo más? Escribe el número de la opción (1-5) o 5 para hablar con un asesor.",
+    "ok": "¡Perfecto! Agendamos tu cita aquí: https://technova-t0j2.onrender.com/#agendar o escribe 5 para hablar con un asesor.",
+    "no": "Sin problema. Si necesitas algo más, escríbenos. Estamos para servirte."
   },
   "portfolio": [
     { "name": "Laptop corporativa", "desc": "Reparación y optimización" },
