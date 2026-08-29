@@ -18,6 +18,62 @@ const company = {
   email: process.env.COMPANY_EMAIL || '',
 };
 
+// ---------- notificación WhatsApp (Meta Cloud API) ----------
+// Se activa solo si configuras WHATSAPP_TOKEN y WHATSAPP_PHONE_ID en las
+// variables de entorno. Envía un mensaje de confirmación al cliente cuando
+// crea un pedido. Fuera de la ventana de 24h de WhatsApp se requiere una
+// plantilla aprobada (usa WHATSAPP_TEMPLATE). No rompe el flujo si falla.
+async function notifyWhatsApp(telefono, nombre, servicio, orderId) {
+  const token = process.env.WHATSAPP_TOKEN;
+  const phoneId = process.env.WHATSAPP_PHONE_ID;
+  if (!token || !phoneId) return; // desactivado: no hay credenciales
+
+  let digits = String(telefono || '').replace(/\D/g, '');
+  if (!digits.startsWith('56') && digits.length === 9) digits = '56' + digits;
+  if (!digits) return;
+
+  const shortId = String(orderId).slice(-6);
+  const text = `¡Hola ${nombre || ''}! 👋 Gracias por tu solicitud en TechNova. Recibimos tu pedido (#${shortId}) de *${servicio}*. Te contactaremos pronto para confirmar los detalles. 🚀`;
+
+  const url = `https://graph.facebook.com/v19.0/${phoneId}/messages`;
+  const template = process.env.WHATSAPP_TEMPLATE;
+  const body = template
+    ? {
+        messaging_product: 'whatsapp',
+        to: digits,
+        type: 'template',
+        template: {
+          name: template,
+          language: { code: 'es' },
+          components: [{ type: 'body', parameters: [
+            { type: 'text', text: nombre || '' },
+            { type: 'text', text: servicio || '' },
+            { type: 'text', text: shortId },
+          ] }],
+        },
+      }
+    : {
+        messaging_product: 'whatsapp',
+        to: digits,
+        type: 'text',
+        text: { body: text },
+      };
+
+  try {
+    const r = await fetch(url, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    if (!r.ok) {
+      const err = await r.text().catch(() => '');
+      console.error('WhatsApp notify falló:', r.status, err.slice(0, 200));
+    }
+  } catch (e) {
+    console.error('WhatsApp notify error:', e.message);
+  }
+}
+
 // ---------- utilidades ----------
 function getCookie(req, name) {
   const c = req.headers.cookie;
@@ -102,6 +158,9 @@ app.post('/api/orders', async (req, res) => {
   const greeting = process.env.WA_GREETING || '¡Hola! 👋 Somos TechNova. Cuéntanos en qué te ayudamos: reparación y optimización de tu PC, mantenimiento o desarrollo web. Agenda tu cita, ¡rápido y garantizado! 🚀';
   const msg = `${greeting}\n\n¡Quiero agendar una cita! 🚀\n\n*Servicio:* ${servicio}\n*Fecha:* ${fecha || '—'}\n*Hora:* ${hora || '—'}\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n\n*Descripción:*\n${descripcion || '—'}`;
   const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
+
+  // Notificación automática al cliente por WhatsApp (si hay credenciales)
+  notifyWhatsApp(telefono, nombre, servicio, orderId).catch(() => {});
 
   res.json({ ok: true, orderId, waLink });
 });
