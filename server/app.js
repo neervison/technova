@@ -11,6 +11,9 @@ const bot = require('./bot');
 const app = express();
 const PUBLIC = path.join(__dirname, '..', 'public');
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 const company = {
   name: process.env.COMPANY_NAME || 'TechNova',
   rfc: process.env.COMPANY_RFC || '',
@@ -161,8 +164,6 @@ async function getInvoiceData(orderId) {
 }
 
 // ---------- middleware ----------
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(express.static(PUBLIC, {
   setHeaders(res) {
     res.setHeader('Cache-Control', 'no-cache');
