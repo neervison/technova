@@ -17,6 +17,34 @@
   var chips = document.getElementById('tn-chat-chips');
   var started = false;
 
+  // Sonido de teclado (sintetizado, sin archivos externos)
+  var audioCtx = null;
+  function playKey() {
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      var o = audioCtx.createOscillator();
+      var g = audioCtx.createGain();
+      o.type = 'square';
+      o.frequency.value = 420 + Math.random() * 180;
+      var t0 = audioCtx.currentTime;
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(0.05, t0 + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.04);
+      o.connect(g);
+      g.connect(audioCtx.destination);
+      o.start(t0);
+      o.stop(t0 + 0.045);
+    } catch (e) { /* ignora si el audio no está disponible */ }
+  }
+
+  document.addEventListener('keydown', function (e) {
+    var el = e.target;
+    if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') && !el.readOnly && !el.disabled) {
+      playKey();
+    }
+  });
+
   var suggestions = [
     { label: '1 · Reparación PC', text: '1' },
     { label: '2 · Optimización', text: '2' },
