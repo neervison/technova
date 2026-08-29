@@ -11,11 +11,21 @@ Para que responda a clientes **reales** necesitas una cuenta de **WhatsApp Busin
 2. En el panel de la app, agrega el producto **WhatsApp**.
 3. En la sección **WhatsApp > API Setup** verás:
    - **Phone Number ID** (ej. `1234567890...`) → guárdalo.
-   - Un **token temporal**. Genera un **token permanente** (System User) desde
-     *WhatsApp > API Setup > Generate access token* o creando un System User en
-     *Business Manager > Users > System Users* y dándole permiso `whatsapp_business_messaging`.
+   - El **token temporal** (válido ~60 min). Cámbialo por un **token permanente**:
+     - Ve a *Meta Business Manager > Configuración > Usuarios > System Users*.
+     - Crea un *System User* (nombre p.ej. `techNovaBot`), rol *Admin*.
+     - En *System Users*, entra al usuario y en *Assign Assets* agrega tu
+       *Business Account* y tu app, con permiso `whatsapp_business_messaging`
+       (y `whatsapp_business_management` para configurar).
+     - Genera un *System User Access Token* con ese permiso y unigura la vigencia
+       (p.ej. 1 año). **Cópialo ya**: solo se muestra una vez.
+     - Ese token va en la variable `WHATSAPP_TOKEN` de Render.
    - El número de prueba ya viene asociado; para producción conecta tu número real
-     verificado (Business Manager > Phone Numbers).
+     verificado (Business Manager > Phone Numbers) y usalo en `WHATSAPP_PHONE_ID`.
+
+   > Si prefieres lo rápido para pruebas: en *WhatsApp > API Setup* hay un botón
+   > *Generate access token* (temporal). Funciona para validar el webhook, pero
+   > expirará; usa el System User para producción.
 
 ## 2. Variables de entorno (Render)
 En el panel de Render de este servicio, agrega/actualiza:

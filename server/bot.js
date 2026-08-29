@@ -43,6 +43,7 @@ function handleIncoming(phone, text) {
     precio: DATA.replies.precio, costo: DATA.replies.precio,
     horario: DATA.replies.horario, hora: DATA.replies.horario,
     ubicacion: DATA.replies.ubicacion, donde: DATA.replies.ubicacion,
+    gracias: DATA.replies.gracias,
   };
   for (const k in faq) {
     if (raw.includes(k)) return { reply: faq[k] };

@@ -13,9 +13,10 @@
     "advisor": "Un asesor te contactará pronto. Déjanos tu *nombre* y *teléfono* y te escribimos. También puedes agendar aquí: https://technova-t0j2.onrender.com/#agendar",
     "bye": "¡Gracias! Te esperamos en TechNova.",
     "fallback": "No entendí. Escribe el número de la opción (1-5) o 5 para hablar con un asesor.",
-    "precio": "*Precios referenciales:*\n- Diagnóstico: gratis\n- Mantenimiento PC: desde $25.000\n- Reparación: según pieza\n- Página web: cotización según alcance\nEscribe 5 para hablar con un asesor.",
+    "precio": "*Precios:* el diagnóstico es gratis y cotizamos antes de empezar. Mantenimiento, reparación y páginas web se presupuestan según el equipo y el alcance. Escribe 5 para hablar con un asesor.",
     "horario": "Atendemos *lunes a sábado de 9:00 a 19:00*. Agendamos tu cita por esta misma vía o en la web.",
-    "ubicacion": "Estamos en Av. Tecnología 123, Ciudad. También hacemos soporte remoto."
+    "ubicacion": "Estamos en Av. Tecnología 123, Ciudad. También hacemos soporte remoto.",
+    "gracias": "¡Con gusto! Estamos para ayudarte. ¿Necesitas algo más? Escribe el número de la opción (1-5) o 5 para hablar con un asesor."
   },
   "portfolio": [
     { "name": "Laptop corporativa", "desc": "Reparación y optimización" },
