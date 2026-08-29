@@ -26,3 +26,27 @@ services:
         sync: false
       - key: COMPANY_EMAIL
         sync: false
+  - type: web
+    name: technova-n8n
+    image: n8nio/n8n
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: N8N_PORT
+        value: 5678
+      - key: N8N_PROTOCOL
+        value: https
+      - key: N8N_HOST
+        value: 0.0.0.0
+      - key: N8N_SECURE_COOKIE
+        value: false
+      - key: WEBHOOK_URL
+        value: https://technova-n8n.onrender.com
+      - key: N8N_DEFAULT_EMAIL
+        value: neervison@gmail.com
+      - key: N8N_DEFAULT_PASSWORD
+        value: TechNova2026!
+      - key: N8N_BASIC_AUTH_USER
+        value: admin
+      - key: N8N_BASIC_AUTH_PASSWORD
+        value: TechNova2026!
