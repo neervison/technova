@@ -98,6 +98,7 @@ async function showDashboard() {
         <h1 class="font-display text-3xl font-bold text-white">Panel del <span class="text-brand-emerald">vendedor</span></h1>
         <p class="text-sm text-slate-400">Clientes, pedidos y facturación</p>
       </div>
+      <a href="/" class="px-5 py-2 rounded-full border border-brand-border text-sm hover:border-brand-cyan transition-colors">Ver sitio web</a>
       <button id="logout" class="px-5 py-2 rounded-full border border-brand-border text-sm hover:border-brand-cyan transition-colors">Cerrar sesión</button>
     </div>
 
