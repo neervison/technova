@@ -38,6 +38,16 @@ function handleIncoming(phone, text) {
     return { reply: DATA.welcome };
   }
 
+  // Preguntas frecuentes por palabra clave
+  const faq = {
+    precio: DATA.replies.precio, costo: DATA.replies.precio,
+    horario: DATA.replies.horario, hora: DATA.replies.horario,
+    ubicacion: DATA.replies.ubicacion, donde: DATA.replies.ubicacion,
+  };
+  for (const k in faq) {
+    if (raw.includes(k)) return { reply: faq[k] };
+  }
+
   if (step === 'main') {
     if (!digit) return { reply: DATA.welcome };
     const map = { '1': 'repair', '2': 'optimize', '3': 'web', '4': 'portfolio', '5': 'advisor' };
