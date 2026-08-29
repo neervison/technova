@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechNova — Mantenimiento de PCs y Desarrollo Web</title>
+  <meta name="description" content="TechNova: mantenimiento, reparación y optimización de PCs, y desarrollo web profesional. Agenda tu cita por WhatsApp." />
+
+  <!-- Google Fonts: Inter + Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind.config.js"></script>
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="bg-brand-dark text-slate-200 font-sans antialiased selection:bg-brand-emerald/30">
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-brand-dark/70 border-b border-brand-border">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#inicio" class="flex items-center gap-2 group">
+        <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-brand-emerald to-brand-cyan">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" />
+          </svg>
+        </span>
+        <span class="font-display font-bold text-lg tracking-tight text-white">Tech<span class="gradient-text">Nova</span></span>
+      </a>
+
+      <!-- Enlaces desktop -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#servicios" class="hover:text-white transition-colors">Servicios</a>
+        <a href="#portafolio" class="hover:text-white transition-colors">Portafolio</a>
+        <a href="#testimonios" class="hover:text-white transition-colors">Testimonios</a>
+        <a href="#agendar" class="hover:text-white transition-colors">Agendar</a>
+        <a href="/admin" class="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-brand-emerald text-brand-emerald font-semibold hover:bg-brand-emerald hover:text-brand-dark transition-colors">Admin</a>
+        <a href="#agendar" class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-gradient-to-r from-brand-emerald to-brand-cyan text-brand-dark font-semibold hover:opacity-90 transition-opacity">Contáctanos</a>
+      </div>
+
+      <!-- Hamburguesa -->
+      <button id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/5 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Panel móvil -->
+    <div id="nav-panel" class="md:hidden hidden border-t border-brand-border bg-brand-dark/95 backdrop-blur-md">
+      <div class="px-4 py-4 flex flex-col gap-1 text-sm font-medium">
+        <a href="#servicios" class="nav-link px-3 py-2 rounded-lg hover:bg-white/5">Servicios</a>
+        <a href="#portafolio" class="nav-link px-3 py-2 rounded-lg hover:bg-white/5">Portafolio</a>
+        <a href="#testimonios" class="nav-link px-3 py-2 rounded-lg hover:bg-white/5">Testimonios</a>
+        <a href="#agendar" class="nav-link px-3 py-2 rounded-lg hover:bg-white/5">Agendar</a>
+        <a href="/admin" class="nav-link px-3 py-2 rounded-lg hover:bg-white/5 text-brand-emerald font-semibold">Admin</a>
+        <a href="#agendar" class="nav-link mt-2 inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-emerald to-brand-cyan text-brand-dark font-semibold">Contáctanos</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="inicio" class="hero-mesh relative overflow-hidden min-h-screen flex items-center pt-16">
+    <!-- Resplandores ambientales del hero -->
+    <div class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="animate-float absolute -top-10 left-8 w-40 h-40 rounded-full bg-brand-emerald/20 blur-3xl"></div>
+      <div class="animate-float-delayed absolute top-1/3 -right-10 w-56 h-56 rounded-full bg-brand-cyan/20 blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-white/5 border border-brand-border text-brand-cyan mb-6">
+            <span class="w-2 h-2 rounded-full bg-brand-emerald animate-pulse"></span> Servicios tecnológicos a tu medida
+          </span>
+          <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight text-white">
+            Tu tecnología, siempre al <span class="gradient-text">máximo rendimiento</span>
+          </h1>
+          <p class="mt-5 text-lg text-slate-300">
+            Reparamos, optimizamos y desarrollamos. Todo lo que tu PC y tu negocio necesitan,
+            <span id="typed" class="text-brand-cyan font-medium">rápido y garantizado</span>.
+          </p>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <a href="#agendar" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-brand-emerald to-brand-cyan text-brand-dark font-semibold hover:opacity-90 transition-opacity">
+              Agendar Mantenimiento
+            </a>
+            <a href="#agendar" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-brand-cyan text-brand-cyan font-semibold hover:bg-brand-cyan/10 transition-colors">
+              Cotizar Página Web
+            </a>
+          </div>
+
+          <!-- Stats / badges -->
+          <div class="mt-10 flex flex-wrap gap-6">
+            <div class="flex items-center gap-2">
+              <span class="font-display text-2xl font-bold text-white">500+</span>
+              <span class="text-sm text-slate-400">equipos reparados</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="font-display text-2xl font-bold text-white">4.9★</span>
+              <span class="text-sm text-slate-400">valoración media</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="font-display text-2xl font-bold text-white">10+</span>
+              <span class="text-sm text-slate-400">años de experiencia</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta visual lateral -->
+        <div data-aos="fade-left" class="relative hidden lg:block">
+          <div class="glow-hover rounded-3xl bg-brand-card border border-brand-border p-8 relative overflow-hidden">
+            <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-brand-cyan/20 blur-3xl"></div>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-emerald to-brand-cyan flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+              </div>
+              <div>
+                <p class="text-white font-semibold">Diagnóstico gratis</p>
+                <p class="text-sm text-slate-400">Sin compromiso</p>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div class="h-2 rounded-full bg-brand-border overflow-hidden"><div class="h-full w-4/5 bg-gradient-to-r from-brand-emerald to-brand-cyan rounded-full"></div></div>
+              <div class="h-2 rounded-full bg-brand-border overflow-hidden"><div class="h-full w-2/3 bg-gradient-to-r from-brand-emerald to-brand-cyan rounded-full"></div></div>
+              <div class="h-2 rounded-full bg-brand-border overflow-hidden"><div class="h-full w-3/4 bg-gradient-to-r from-brand-emerald to-brand-cyan rounded-full"></div></div>
+            </div>
+            <p class="mt-6 text-sm text-slate-400">Optimización real, medible y garantizada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICIOS ============ -->
+  <section id="servicios" class="py-24 bg-brand-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Nuestros <span class="gradient-text">servicios</span></h2>
+        <p class="mt-4 text-slate-400">Dos líneas de especialidad para cubrir todo tu ecosistema tecnológico.</p>
+      </div>
+
+      <!-- Computación -->
+      <div class="mb-16">
+        <h3 class="font-display text-xl font-semibold text-brand-cyan mb-6 flex items-center gap-2" data-aos="fade-up">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Computación
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card 1 -->
+          <div class="glow-hover bg-brand-card border border-brand-border rounded-2xl p-6" data-aos="fade-up">
+            <div class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <h4 class="text-white font-semibold mb-2">Reparación de Hardware</h4>
+            <p class="text-sm text-slate-400">Diagnóstico y cambio de piezas: pantallas, discos, fuentes, tarjetas y más.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="glow-hover bg-brand-card border border-brand-border rounded-2xl p-6" data-aos="fade-up">
+            <div class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h4 class="text-white font-semibold mb-2">Optimización de Software</h4>
+            <p class="text-sm text-slate-400">Acelera arranque y rendimiento, elimina procesos y mejora la estabilidad.</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="glow-hover bg-brand-card border border-brand-border rounded-2xl p-6" data-aos="fade-up">
+            <div class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M7 15h.01M11 15h.01M15 15h.01"/></svg>
+            </div>
+            <h4 class="text-white font-semibold mb-2">Limpieza y Mantenimiento</h4>
+            <p class="text-sm text-slate-400">Limpieza interna de polvo, cambio de pasta térmica y revisión preventiva.</p>
+          </div>
+          <!-- Card 4 -->
+          <div class="glow-hover bg-brand-card border border-brand-border rounded-2xl p-6" data-aos="fade-up">
+            <div class="w-12 h-12 rounded-xl bg-brand-emerald/10 text-brand-emerald flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="16" height="16" rx="2"/><path d="M22 7l-8.5 8.5-3-3L6 18"/></svg>
+            </div>
+            <h4 class="text-white font-semibold mb-2">Formateo e Instalación</h4>
+            <p class="text-sm text-slate-400">Sistema operativo limpio, drivers, programas y copia de seguridad de datos.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desarrollo Web -->
+      <div>
+        <h3 class="font-display text-xl font-semibold text-brand-emerald mb-6 flex items-center gap-2" data-aos="fade-up">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Desarrollo Web
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="glow-hover bg-brand-card border border-brand-border rounded-2xl p-6" data-aos="fade-up">
+            <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <h4 class="text-white font-semibold mb-2">Landing Pages</h4>
+            <p class="text-sm text-slate-400">Páginas de conversión rápidas, responsivas y diseñadas para vender.</p>
+          </div>
+          <div class="glow-hover bg-brand-card border border-brand-border rounded-2xl p-6" data-aos="fade-up">
+            <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+            </div>
+            <h4 class="text-white font-semibold mb-2">E-commerce</h4>
+            <p class="text-sm text-slate-400">Tiendas online con pasarela de pago, catálogo y gestión de pedidos.</p>
+          </div>
+          <div class="glow-hover bg-brand-card border border-brand-border rounded-2xl p-6" data-aos="fade-up">
+            <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>
+            </div>
+            <h4 class="text-white font-semibold mb-2">Sitios Corporativos</h4>
+            <p class="text-sm text-slate-400">Webs institucionales profesionales que transmiten confianza y marca.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PORTAFOLIO ============ -->
+  <section id="portafolio" class="py-24 bg-brand-card/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Nuestro <span class="gradient-text">portafolio</span></h2>
+        <p class="mt-4 text-slate-400">Algunos proyectos que hemos llevado a la web con resultados reales.</p>
+      </div>
+
+      <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"><!-- tarjetas inyectadas por JS --></div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIOS ============ -->
+  <section id="testimonios" class="py-24 bg-brand-dark overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-14" data-aos="fade-up">
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Lo que dicen <span class="gradient-text">nuestros clientes</span></h2>
+        <p class="mt-4 text-slate-400">Más de 500 equipos y decenas de sitios web respaldan nuestro trabajo.</p>
+      </div>
+
+      <div class="relative" data-aos="fade-up">
+        <div id="ts-viewport" class="overflow-hidden rounded-3xl">
+          <div id="ts-track" class="ts-track"><!-- slides inyectados por JS --></div>
+        </div>
+
+        <!-- Controles -->
+        <button id="ts-prev" aria-label="Anterior" class="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-brand-card border border-brand-border text-white flex items-center justify-center hover:border-brand-cyan transition-colors">◀</button>
+        <button id="ts-next" aria-label="Siguiente" class="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-brand-card border border-brand-border text-white flex items-center justify-center hover:border-brand-cyan transition-colors">▶</button>
+
+        <!-- Dots -->
+        <div id="ts-dots" class="flex justify-center gap-2 mt-8"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AGENDAMIENTO ============ -->
+  <section id="agendar" class="py-24 bg-brand-card/40">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Agenda tu <span class="gradient-text">cita</span></h2>
+        <p class="mt-4 text-slate-400">Elige el servicio, la fecha y la hora. Te redirigimos a WhatsApp para confirmar.</p>
+      </div>
+
+      <form id="booking-form" class="bg-brand-card border border-brand-border rounded-3xl p-6 sm:p-8" data-aos="fade-up" novalidate>
+        <!-- Servicio -->
+        <fieldset class="mb-6">
+          <legend class="block text-sm font-medium text-slate-300 mb-3">Servicio *</legend>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="servicio-group">
+            <label class="cursor-pointer">
+              <input type="radio" name="servicio" value="Mantenimiento de PC" class="peer sr-only" checked />
+              <div class="rounded-2xl border border-brand-border bg-brand-dark/40 p-4 transition-all peer-checked:border-brand-emerald peer-checked:bg-brand-emerald/10 hover:border-brand-cyan">
+                <span class="block font-semibold text-white">🛠️ Mantenimiento de PC</span>
+                <span class="text-xs text-slate-400">Reparación, optimización y limpieza</span>
+              </div>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="servicio" value="Desarrollo Web" class="peer sr-only" />
+              <div class="rounded-2xl border border-brand-border bg-brand-dark/40 p-4 transition-all peer-checked:border-brand-cyan peer-checked:bg-brand-cyan/10 hover:border-brand-cyan">
+                <span class="block font-semibold text-white">💻 Desarrollo Web</span>
+                <span class="text-xs text-slate-400">Landing, e-commerce o corporativo</span>
+              </div>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <div>
+            <label for="fecha" class="block text-sm font-medium text-slate-300 mb-2">Fecha *</label>
+            <input type="date" id="fecha" name="fecha" required class="w-full rounded-xl bg-brand-dark/60 border border-brand-border px-4 py-3 text-white focus:outline-none focus:border-brand-emerald transition-colors" />
+          </div>
+          <div>
+            <label for="hora" class="block text-sm font-medium text-slate-300 mb-2">Hora *</label>
+            <select id="hora" name="hora" required class="w-full rounded-xl bg-brand-dark/60 border border-brand-border px-4 py-3 text-white focus:outline-none focus:border-brand-emerald transition-colors">
+              <option value="" disabled selected>Selecciona una hora</option>
+              <option value="09:00">09:00</option>
+              <option value="10:00">10:00</option>
+              <option value="11:00">11:00</option>
+              <option value="12:00">12:00</option>
+              <option value="14:00">14:00</option>
+              <option value="15:00">15:00</option>
+              <option value="16:00">16:00</option>
+              <option value="17:00">17:00</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <div>
+            <label for="nombre" class="block text-sm font-medium text-slate-300 mb-2">Nombre *</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre" class="w-full rounded-xl bg-brand-dark/60 border border-brand-border px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-brand-emerald transition-colors" />
+          </div>
+          <div>
+            <label for="telefono" class="block text-sm font-medium text-slate-300 mb-2">Teléfono *</label>
+            <input type="tel" id="telefono" name="telefono" required placeholder="5512345678" class="w-full rounded-xl bg-brand-dark/60 border border-brand-border px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-brand-emerald transition-colors" />
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label for="descripcion" class="block text-sm font-medium text-slate-300 mb-2">Descripción</label>
+          <textarea id="descripcion" name="descripcion" rows="3" placeholder="Cuéntanos qué necesitas" class="w-full rounded-xl bg-brand-dark/60 border border-brand-border px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-brand-emerald transition-colors"></textarea>
+        </div>
+
+        <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-gradient-to-r from-brand-emerald to-brand-cyan text-brand-dark font-semibold hover:opacity-90 transition-opacity">
+          Confirmar y agendar por WhatsApp
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FAB WHATSAPP ============ -->
+  <a id="fab-wa" href="https://wa.me/56961112430?text=Hola,%20necesito%20informes" target="_blank" rel="noopener" aria-label="WhatsApp"
+     class="fixed bottom-4 right-4 z-50 w-14 h-14 rounded-full bg-brand-emerald text-white flex items-center justify-center pulse-ring shadow-lg">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-brand-dark border-t border-brand-border pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Marca -->
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-brand-emerald to-brand-cyan">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" /></svg>
+            </span>
+            <span class="font-display font-bold text-lg text-white">Tech<span class="gradient-text">Nova</span></span>
+          </div>
+          <p class="text-sm text-slate-400">Mantenimiento de PCs y desarrollo web profesional. Tecnología que trabaja para ti.</p>
+        </div>
+
+        <!-- Enlaces rápidos -->
+        <div>
+          <h4 class="text-white font-semibold mb-4">Enlaces rápidos</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li><a href="#servicios" class="hover:text-brand-cyan transition-colors">Servicios</a></li>
+            <li><a href="#portafolio" class="hover:text-brand-cyan transition-colors">Portafolio</a></li>
+            <li><a href="#testimonios" class="hover:text-brand-cyan transition-colors">Testimonios</a></li>
+            <li><a href="#agendar" class="hover:text-brand-cyan transition-colors">Agendar</a></li>
+            <li><a href="/admin" class="hover:text-brand-cyan transition-colors">Panel del vendedor</a></li>
+          </ul>
+        </div>
+
+        <!-- Servicios + redes -->
+        <div>
+          <h4 class="text-white font-semibold mb-4">Servicios</h4>
+          <ul class="space-y-2 text-sm text-slate-400 mb-5">
+            <li>Reparación de Hardware</li>
+            <li>Optimización de Software</li>
+            <li>Landing Pages</li>
+            <li>E-commerce</li>
+          </ul>
+          <div class="flex gap-3">
+            <a href="#" aria-label="WhatsApp" class="w-9 h-9 rounded-lg bg-white/5 border border-brand-border flex items-center justify-center hover:border-brand-emerald transition-colors text-brand-emerald">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-lg bg-white/5 border border-brand-border flex items-center justify-center hover:border-brand-emerald transition-colors text-brand-cyan">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-lg bg-white/5 border border-brand-border flex items-center justify-center hover:border-brand-emerald transition-colors text-brand-cyan">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-lg bg-white/5 border border-brand-border flex items-center justify-center hover:border-brand-emerald transition-colors text-brand-cyan">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contacto -->
+        <div>
+          <h4 class="text-white font-semibold mb-4">Contacto</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li>📞 <a href="tel:+56961112430" class="hover:text-brand-cyan transition-colors">+56 9 6111 2430</a></li>
+            <li>✉️ <a href="mailto:hola@technova.mx" class="hover:text-brand-cyan transition-colors">hola@technova.mx</a></li>
+            <li>📍 Av. Tecnología 123, Ciudad</li>
+            <li>🕘 Lun–Sáb 9:00–18:00</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-brand-border mt-12 pt-6 text-center text-sm text-slate-500">
+        © <span id="year"></span> TechNova. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ TOAST ============ -->
+  <div id="toast" class="fixed bottom-24 right-4 z-50 hidden opacity-0 translate-y-2 px-5 py-3 rounded-xl bg-brand-emerald text-brand-dark font-semibold shadow-lg">
+    ¡Cita enviada! Te redirigimos a WhatsApp ✅
+  </div>
+
+  <!-- ============ MODAL PORTAFOLIO ============ -->
+  <div id="project-modal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl bg-brand-card border border-brand-border">
+      <button id="modal-close" aria-label="Cerrar" class="absolute top-3 right-3 z-10 w-10 h-10 rounded-full bg-brand-dark/80 border border-brand-border text-white flex items-center justify-center hover:border-brand-cyan transition-colors">✕</button>
+      <div id="modal-content"><!-- inyectado por JS --></div>
+    </div>
+  </div>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- ============ APP JS ============ -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
