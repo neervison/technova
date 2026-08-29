@@ -98,7 +98,7 @@ app.post('/api/orders', async (req, res) => {
   });
   const orderId = info.insertedId.toString();
 
-  const waNumber = process.env.WA_NUMBER || '5210000000000';
+  const waNumber = process.env.WA_NUMBER || '56961112430';
   const msg = `¡Hola! Quiero agendar una cita 🚀\n\n*Servicio:* ${servicio}\n*Fecha:* ${fecha || '—'}\n*Hora:* ${hora || '—'}\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n\n*Descripción:*\n${descripcion || '—'}`;
   const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
 
