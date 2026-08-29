@@ -99,7 +99,8 @@ app.post('/api/orders', async (req, res) => {
   const orderId = info.insertedId.toString();
 
   const waNumber = process.env.WA_NUMBER || '56961112430';
-  const msg = `¡Hola! Quiero agendar una cita 🚀\n\n*Servicio:* ${servicio}\n*Fecha:* ${fecha || '—'}\n*Hora:* ${hora || '—'}\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n\n*Descripción:*\n${descripcion || '—'}`;
+  const greeting = process.env.WA_GREETING || '¡Hola! 👋 Somos TechNova. Cuéntanos en qué te ayudamos: reparación y optimización de tu PC, mantenimiento o desarrollo web. Agenda tu cita, ¡rápido y garantizado! 🚀';
+  const msg = `${greeting}\n\n¡Quiero agendar una cita! 🚀\n\n*Servicio:* ${servicio}\n*Fecha:* ${fecha || '—'}\n*Hora:* ${hora || '—'}\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n\n*Descripción:*\n${descripcion || '—'}`;
   const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
 
   res.json({ ok: true, orderId, waLink });

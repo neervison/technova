@@ -8,6 +8,9 @@ window.TN = window.TN || {};
 /* Número de WhatsApp (placeholder): reemplazar por el número real */
 window.TN.WA_NUMBER = '56961112430';
 
+/* Mensaje de bienvenida prefijado en el chat de WhatsApp (relacionado con el servicio) */
+window.TN.WA_GREETING = '¡Hola! 👋 Somos TechNova. Cuéntanos en qué te ayudamos: reparación y optimización de tu PC, mantenimiento o desarrollo web. Agenda tu cita, ¡rápido y garantizado! 🚀';
+
 /* Testimonios del carrusel */
 window.TN.testimonials = [
   { name: 'María González', role: 'Dueña de cafetería', text: 'Me repararon la computadora en el día y quedó como nueva. Súper profesionales y rápidos.', avatar: 'img/avatars/maria-gonzalez.svg' },

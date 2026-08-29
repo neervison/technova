@@ -79,6 +79,15 @@
     tick();
   }
 
+  // 3.1c FAB de WhatsApp: usa número y saludo configurados en window.TN
+  function initFabWhatsApp() {
+    const fab = document.getElementById('fab-wa');
+    if (!fab || !window.TN) return;
+    const num = window.TN.WA_NUMBER || '56961112430';
+    const msg = window.TN.WA_GREETING || 'Hola, necesito informes';
+    fab.href = `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+  }
+
   // 3.2 Subtítulo animado (typewriter)
   function initTyped() {
     const el = $('#typed');
@@ -277,7 +286,8 @@
       // 2) Redirigir a WhatsApp (link del servidor o construido en cliente)
       if (!waLink) {
         const waNumber = (window.TN && window.TN.WA_NUMBER) || '56961112430';
-        const msg = `¡Hola! Quiero agendar una cita 🚀\n\n*Servicio:* ${servicio.value}\n*Fecha:* ${fecha.value}\n*Hora:* ${hora.value}\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n\n*Descripción:*\n${descripcion || '—'}`;
+        const greeting = (window.TN && window.TN.WA_GREETING) || '¡Hola! 👋';
+        const msg = `${greeting}\n\n¡Quiero agendar una cita! 🚀\n\n*Servicio:* ${servicio.value}\n*Fecha:* ${fecha.value}\n*Hora:* ${hora.value}\n*Nombre:* ${nombre}\n*Teléfono:* ${telefono}\n\n*Descripción:*\n${descripcion || '—'}`;
         waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
       }
       window.open(waLink, '_blank');
@@ -298,6 +308,7 @@
   function init() {
     initNav();
     initHeroTitle();
+    initFabWhatsApp();
     initTyped();
     initTestimonials();
     initPortfolio();
